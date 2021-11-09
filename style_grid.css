@@ -1,0 +1,74 @@
+@charset "utf-8";
+
+/* スマホ表示 */
+html{
+    font-size: 20px
+    /* 表示媒体ごとにremでフォントの倍率を指定 */
+}
+
+body {
+    display: grid;
+    max-width: 100%;
+    grid-template:
+        "header" 150px
+        "center" 1fr
+        "left  "
+        "right "
+        "footer" 300px;
+    font-family: Georgia, "Gill Sans", sans-serif;
+}
+
+header {
+    grid-area: header;
+    background-color: aqua;
+}
+main {
+    grid-area: center;
+    background-color: brown;
+}
+nav {
+    grid-area: left;
+    background-color: chartreuse;
+}
+aside {
+    grid-area: right;
+    background-color: darkcyan;
+}
+footer {
+    grid-area: footer;
+    background-color: darkgoldenrod;
+}
+
+
+/* タブレット表示 560px以上*/
+@media (min-width: 560px) and (max-width: 1025px) {
+    body {
+        font-size: 2rem;
+        margin: 10px;
+        grid-template:
+            "...... ......               ......"
+            "header header               header" 150px
+            "left   ......               right " 100px
+            "center center               center" 1fr
+            "footer footer               footer" 300px
+            "...... ......               ......"
+            / 1fr  minmax(10px, auto)    1fr;
+    }
+}
+
+/* PC表示 1025px以上*/
+@media (min-width: 1025px){
+    body {
+        font-size: 3rem;
+        margin: 20px;
+        grid-template:
+            "...... ...... ......              ...... ......"
+            "header header header              header header" 150px
+            "...... ...... ......              ...... ......"
+            "left   ...... center              ...... right " 3fr
+            "...... ...... ......              ...... ......"
+            "footer footer footer              footer footer" 300px
+            "...... ...... ......              ...... ......"
+            / 300px 10px    minmax(100px, auto) 10px   300px;
+    }
+}
